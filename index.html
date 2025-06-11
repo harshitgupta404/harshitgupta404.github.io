@@ -8,17 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
-            --secondary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --accent-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            --gold-gradient: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
-            --dark-bg: #0f0f23;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --glass-bg: rgba(255, 255, 255, 0.1);
+            --primary: #5d9bff;
+            --primary-light: #7eb0ff;
+            --secondary: #3ccf8e;
+            --accent: #ffb74d;
+            --light-bg: #f9fbfd;
+            --dark-bg: #1a2a3a;
             --text-dark: #2c3e50;
             --text-light: #7f8c8d;
-            --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 30px 80px rgba(0, 0, 0, 0.15);
+            --card-bg: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
         * {
@@ -29,7 +30,7 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--light-bg);
             color: var(--text-dark);
             line-height: 1.7;
             overflow-x: hidden;
@@ -45,12 +46,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--primary-gradient);
+            background: var(--primary);
             border-radius: 10px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary-gradient);
+            background: var(--primary-light);
         }
 
         /* Animated Background Particles */
@@ -68,7 +69,7 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: var(--accent-gradient);
+            background: var(--secondary);
             border-radius: 50%;
             animation: float 20s infinite linear;
             opacity: 0.6;
@@ -91,38 +92,19 @@
             }
         }
 
-        /* Hanging Curved Navbar */
+        /* Tesla-style Navbar */
         .navbar {
             position: fixed;
-            top: -60px;
+            top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
             padding: 20px 0;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             z-index: 1000;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            border-bottom-left-radius: 50% 30px;
-            border-bottom-right-radius: 50% 30px;
-            overflow: hidden;
-        }
-        
-        .navbar.visible {
-            top: 0;
-        }
-        
-        .navbar::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -5%;
-            width: 110%;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 50% 50% 0 0;
-            z-index: -1;
+            transition: all 0.4s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .navbar.scrolled {
@@ -144,83 +126,75 @@
             align-items: center;
             text-decoration: none;
             font-family: 'Playfair Display', serif;
-        }
-
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-gradient);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
             transition: all 0.3s ease;
         }
 
-        .logo-icon:hover {
-            transform: rotate(10deg) scale(1.1);
+        .logo:hover {
+            color: var(--secondary);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover .logo-icon {
+            background: var(--secondary);
+            transform: rotate(10deg);
         }
 
         .logo-icon i {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: white;
         }
 
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
+        /* Tesla-style navigation */
         .nav-links {
             display: flex;
             list-style: none;
             align-items: center;
+            gap: 40px;
         }
 
-        .nav-links li {
-            margin-left: 40px;
-        }
-
-        .nav-links a {
+        .nav-links li a {
             color: var(--text-dark);
             text-decoration: none;
             font-size: 1rem;
             font-weight: 500;
-            padding: 12px 24px;
-            border-radius: 30px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
+            padding: 8px 0;
+            transition: all 0.3s ease;
         }
 
-        .nav-links a::before {
+        .nav-links li a::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--primary-gradient);
-            transition: all 0.4s ease;
-            z-index: -1;
-        }
-
-        .nav-links a:hover::before,
-        .nav-links a.active::before {
+            bottom: 0;
             left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        .nav-links li a:hover::after,
+        .nav-links li a.active::after {
+            width: 100%;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--primary);
         }
 
         /* Hero Section Enhancement */
@@ -229,10 +203,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, #6C9BFF 0%, #8BD8E2 100%);
             position: relative;
             overflow: hidden;
-            padding-top: 60px;
+            padding-top: 80px;
         }
 
         .hero::before {
@@ -259,7 +233,7 @@
         .shape {
             position: absolute;
             border-radius: 50%;
-            background: var(--glass-bg);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
         }
 
@@ -336,8 +310,8 @@
         .btn-premium {
             display: inline-flex;
             align-items: center;
-            background: var(--gold-gradient);
-            color: white;
+            background: var(--accent);
+            color: var(--text-dark);
             padding: 18px 45px;
             border-radius: 50px;
             text-decoration: none;
@@ -346,31 +320,15 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             cursor: pointer;
-            box-shadow: 0 15px 35px rgba(255, 216, 155, 0.4);
+            box-shadow: 0 15px 35px rgba(255, 183, 77, 0.3);
             position: relative;
             overflow: hidden;
             animation: slideUp 1s ease-out 0.9s both;
         }
 
-        .btn-premium::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
-            transition: all 0.4s ease;
-            z-index: -1;
-        }
-
-        .btn-premium:hover::before {
-            left: 0;
-        }
-
         .btn-premium:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(255, 216, 155, 0.6);
+            box-shadow: 0 25px 50px rgba(255, 183, 77, 0.4);
         }
 
         .btn-premium i {
@@ -385,7 +343,7 @@
         /* Premium Featured Books */
         .featured-books {
             padding: 120px 30px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--light-bg);
             position: relative;
         }
 
@@ -398,10 +356,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             font-weight: 700;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
             margin-bottom: 20px;
         }
 
@@ -423,57 +378,22 @@
 
         .book-card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
             border-radius: 25px;
             overflow: hidden;
             box-shadow: var(--shadow-soft);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
         }
 
-        .book-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: all 0.4s ease;
-            z-index: -1;
-        }
-
         .book-card:hover {
-            transform: translateY(-15px) scale(1.02);
+            transform: translateY(-15px);
             box-shadow: var(--shadow-hover);
-        }
-
-        .book-card:hover::before {
-            opacity: 0.05;
         }
 
         .book-image {
             height: 280px;
             overflow: hidden;
             position: relative;
-        }
-
-        .book-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-
-        .book-card:hover .book-image::after {
-            opacity: 0.1;
         }
 
         .book-image img {
@@ -525,17 +445,14 @@
         .book-price {
             font-size: 1.8rem;
             font-weight: 700;
-            background: var(--secondary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--secondary);
             margin-bottom: 25px;
         }
 
         .btn-personalize {
             display: inline-flex;
             align-items: center;
-            background: var(--primary-gradient);
+            background: var(--primary);
             color: white;
             padding: 12px 30px;
             border-radius: 50px;
@@ -547,25 +464,10 @@
             overflow: hidden;
         }
 
-        .btn-personalize::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--secondary-gradient);
-            transition: all 0.4s ease;
-            z-index: -1;
-        }
-
-        .btn-personalize:hover::before {
-            left: 0;
-        }
-
         .btn-personalize:hover {
+            background: var(--primary-light);
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(79, 172, 254, 0.4);
+            box-shadow: 0 15px 35px rgba(93, 155, 255, 0.3);
         }
 
         .btn-personalize i {
@@ -603,10 +505,6 @@
 
         .benefits .section-title {
             color: white;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .benefits .section-subtitle {
@@ -624,7 +522,7 @@
         }
 
         .benefit-card {
-            background: var(--glass-bg);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
             padding: 40px;
             border-radius: 25px;
@@ -633,23 +531,6 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-        }
-
-        .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--accent-gradient);
-            opacity: 0;
-            transition: all 0.4s ease;
-            z-index: -1;
-        }
-
-        .benefit-card:hover::before {
-            opacity: 0.1;
         }
 
         .benefit-card:hover {
@@ -661,13 +542,13 @@
         .benefit-icon {
             width: 80px;
             height: 80px;
-            background: var(--accent-gradient);
+            background: var(--secondary);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
-            box-shadow: 0 15px 35px rgba(67, 233, 123, 0.3);
+            box-shadow: 0 15px 35px rgba(60, 207, 142, 0.3);
             transition: all 0.4s ease;
         }
 
@@ -694,7 +575,7 @@
 
         /* Premium Footer */
         .footer {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+            background: var(--primary);
             color: white;
             padding: 80px 30px 40px;
             position: relative;
@@ -735,7 +616,7 @@
             bottom: 0;
             width: 60px;
             height: 3px;
-            background: var(--gold-gradient);
+            background: var(--accent);
             border-radius: 2px;
         }
 
@@ -791,7 +672,7 @@
             justify-content: center;
             width: 50px;
             height: 50px;
-            background: var(--glass-bg);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             color: white;
@@ -801,9 +682,9 @@
         }
 
         .social-icons a:hover {
-            background: var(--gold-gradient);
-            transform: translateY(-5px) rotate(10deg);
-            box-shadow: 0 15px 30px rgba(255, 216, 155, 0.4);
+            background: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 183, 77, 0.4);
         }
 
         .copyright {
@@ -818,17 +699,58 @@
         }
 
         /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 25px;
+            }
+        }
+
         @media (max-width: 768px) {
             .navbar-container {
                 padding: 0 20px;
             }
             
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                height: 0;
+                overflow: hidden;
+                transition: height 0.4s ease;
+            }
+            
+            .nav-links.active {
+                height: 280px;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                margin: 0;
+                text-align: center;
+            }
+            
+            .nav-links li a {
+                display: block;
+                padding: 15px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--text-dark);
+                font-size: 1.5rem;
+                cursor: pointer;
             }
             
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
             
             .hero p {
@@ -837,6 +759,10 @@
             
             .section-title {
                 font-size: 2.5rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
             }
             
             .books-container {
@@ -849,10 +775,8 @@
                 gap: 30px;
             }
             
-            /* Adjust curved navbar on mobile */
-            .navbar {
-                border-bottom-left-radius: 50% 20px;
-                border-bottom-right-radius: 50% 20px;
+            .benefit-card {
+                padding: 30px;
             }
         }
 
@@ -870,10 +794,8 @@
                 padding: 25px;
             }
             
-            /* Further adjust curved navbar on small screens */
-            .navbar {
-                border-bottom-left-radius: 50% 15px;
-                border-bottom-right-radius: 50% 15px;
+            .footer-content {
+                gap: 30px;
             }
         }
 
@@ -884,7 +806,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--primary-gradient);
+            background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -905,6 +827,22 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -916,21 +854,26 @@
     <!-- Animated Background Particles -->
     <div class="bg-particles" id="particles"></div>
 
-    <!-- Premium Navbar with Hanging Curved Effect -->
+    <!-- Tesla-style Navbar -->
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
             <a href="#" class="logo">
                 <div class="logo-icon">
                     <i class="fas fa-book-open"></i>
                 </div>
-                <div class="logo-text">TalesMania</div>
+                TalesMania
             </a>
-            <ul class="nav-links">
+            
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#" class="active">Home</a></li>
                 <li><a href="#books">Books</a></li>
                 <li><a href="#benefits">Why Us</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
@@ -977,7 +920,7 @@
                         </div>
                         <span class="rating-text">(4.8/5 - 127 reviews)</span>
                     </div>
-                    <p class="book-price">$14.99</p>
+                    <p class="book-price">₹1999</p>
                     <a href="#" class="btn-personalize">
                         Personalize Now
                         <i class="fas fa-magic"></i>
@@ -1003,7 +946,7 @@
                         </div>
                         <span class="rating-text">(4.9/5 - 203 reviews)</span>
                     </div>
-                    <p class="book-price">$16.99</p>
+                    <p class="book-price">₹1999</p>
                     <a href="#" class="btn-personalize">
                         Personalize Now
                         <i class="fas fa-magic"></i>
@@ -1029,7 +972,7 @@
                         </div>
                         <span class="rating-text">(4.7/5 - 89 reviews)</span>
                     </div>
-                    <p class="book-price">$15.49</p>
+                    <p class="book-price">₹1999</p>
                     <a href="#" class="btn-personalize">
                         Personalize Now
                         <i class="fas fa-magic"></i>
@@ -1118,7 +1061,7 @@
         </div>
         
         <div class="copyright">
-            <p>&copy; 2023 TalesMania Premium Books. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: #ffd89b;"></i> for young dreamers</p>
+            <p>&copy; 2023 TalesMania Premium Books. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: var(--accent);"></i> for young dreamers</p>
         </div>
     </footer>
 
@@ -1149,11 +1092,9 @@
             }
         }
 
-        // Navbar Scroll Effect - now with hanging effect
+        // Navbar Scroll Effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
-            
-            // Show navbar when scrolled beyond 100px
             if (window.scrollY > 100) {
                 navbar.classList.add('scrolled');
             } else {
@@ -1161,52 +1102,52 @@
             }
         });
         
-        // Show navbar after page load with animation
+        // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
             
-            // Show the navbar with a slight delay
-            setTimeout(() => {
-                document.getElementById('navbar').classList.add('visible');
-            }, 800);
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
             
-            const navLinks = document.querySelectorAll('.nav-links a');
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
             
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all links
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    
-                    // Add active class to clicked link
-                    this.classList.add('active');
-                    
-                    // Smooth scroll to section
-                    const targetId = this.getAttribute('href');
-                    if (targetId.startsWith('#') && targetId !== '#') {
-                        const targetSection = document.querySelector(targetId);
-                        if (targetSection) {
-                            targetSection.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    }
+            // Close menu when clicking on links
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
                 });
             });
 
-            // Smooth scrolling for hero button
-            const heroBtn = document.querySelector('.btn-premium');
-            heroBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetSection = document.querySelector('#books');
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
 
             // Intersection Observer for animations
@@ -1232,54 +1173,6 @@
                 el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(el);
             });
-
-            // Enhanced button interactions
-            const personalizeButtons = document.querySelectorAll('.btn-personalize');
-            personalizeButtons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Create ripple effect
-                    const ripple = document.createElement('span');
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-                    
-                    ripple.style.cssText = `
-                        position: absolute;
-                        width: ${size}px;
-                        height: ${size}px;
-                        left: ${x}px;
-                        top: ${y}px;
-                        background: rgba(255, 255, 255, 0.3);
-                        border-radius: 50%;
-                        transform: scale(0);
-                        animation: ripple 0.6s ease-out;
-                        pointer-events: none;
-                    `;
-                    
-                    this.style.position = 'relative';
-                    this.style.overflow = 'hidden';
-                    this.appendChild(ripple);
-                    
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
-
-            // Add ripple animation to CSS
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes ripple {
-                    to {
-                        transform: scale(2);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
         });
 
         // Enhanced scroll reveal animation
