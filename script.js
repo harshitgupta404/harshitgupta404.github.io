@@ -1,6 +1,14 @@
 // Function to toggle between light and dark themes
 function toggleTheme() {
-  document.body.classList.toggle("dark");
+  const htmlElement = document.documentElement;
+  htmlElement.classList.toggle("dark");
+
+  // Save the new theme state to localStorage
+  if (htmlElement.classList.contains("dark")) {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.setItem('theme', 'light');
+  }
 }
 
 // Function to navigate to the home page
@@ -51,8 +59,8 @@ function loadNotes() {
   }
 }
 
-// Load content when the window is ready
-window.onload = () => {
+// Load dynamic content when the DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
   loadArticles();
   loadNotes();
-};
+});
