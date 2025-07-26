@@ -2,16 +2,51 @@
   {
     "id": "book-1",
     "title": "Capitalism, Socialism, and Democracy",
+    "author": "Joseph A. Schumpeter",
+    "date": "2025-07-01",
+    "status": "yet-to-start",
+    "statusText": "Yet to start",
+    "summary": "A seminal work that introduces the concept of 'creative destruction.'",
     "content": "A seminal work by **Joseph A. Schumpeter** that introduces the concept of 'creative destruction.' It's a deep dive into the dynamics of capitalism and its relationship with society."
   },
   {
     "id": "book-2",
     "title": "In Search of Lost Time",
+    "author": "Marcel Proust",
+    "date": "2025-07-20",
+    "status": "reading",
+    "statusText": "Currently reading",
+    "summary": "A monumental novel exploring memory, time, and identity.",
     "content": "Written by **Marcel Proust**, this is a monumental novel exploring memory, time, and identity. It's considered one of the most profound works of literature ever written."
   },
   {
     "id": "book-3",
     "title": "Walden",
+    "author": "Henry David Thoreau",
+    "date": "2025-07-15",
+    "status": "reading",
+    "statusText": "Currently reading",
+    "summary": "A reflective account of simple living in natural surroundings.",
     "content": "By **Henry David Thoreau**, this book is a reflective account of simple living in natural surroundings. It's a classic text on self-reliance and the importance of connecting with nature."
+  },
+  {
+    "id": "book-4",
+    "title": "If This Is a Man",
+    "author": "Primo Levi",
+    "date": "2025-06-30",
+    "status": "completed",
+    "statusText": "Finished reading",
+    "summary": "A harrowing memoir of his survival in Auschwitz.",
+    "content": "A harrowing memoir of his survival in Auschwitz. **Primo Levi's** testimony is a powerful and essential read for understanding the human condition."
+  },
+  {
+    "id": "book-5",
+    "title": "The Year of Magical Thinking",
+    "author": "Joan Didion",
+    "date": "2025-06-15",
+    "status": "completed",
+    "statusText": "Finished reading",
+    "summary": "A poignant memoir exploring grief and loss.",
+    "content": "A poignant memoir exploring grief and loss. **Joan Didion's** writing is sharp, incisive, and deeply moving."
   }
 ]
