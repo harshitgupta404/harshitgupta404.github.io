@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Books In My Library - Harshit's Nest</title>
+    <title>Books - Harshit's Nest</title>
     <link rel="stylesheet" href="styles.css" />
     <script>
       (function () {
@@ -30,9 +30,18 @@
       </button>
     </header>
     <main class="main">
-      <h1>Books in my library</h1>
-      <p>A complete list of books I'm reading, have read, or plan to read.</p>
-      <!-- You can add a more detailed list of books here -->
+        <div class="subpage-wrapper">
+            <aside class="subpage-sidebar">
+                <h2>Books</h2>
+                <ul id="subpage-nav-list" class="subpage-nav">
+                    <!-- List will be populated by script -->
+                </ul>
+            </aside>
+            <section class="subpage-content">
+                <h1>Book Title</h1>
+                <p>This is where the content of the selected book will go.</p>
+            </section>
+        </div>
     </main>
     <footer class="footer">
       <div class="footer-links">
