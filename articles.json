@@ -2,16 +2,43 @@
   {
     "id": "article-1",
     "title": "How I Built This Website",
+    "date": "2025-07-26",
     "content": "This is the story of how this website was created, from the initial design inspiration to the final code. It's a journey through modern web development with a focus on simplicity and performance.\n\n### The Stack\n* **HTML5** for structure\n* **CSS3** for styling\n* **JavaScript (ES6)** for interactivity"
   },
   {
     "id": "article-2",
     "title": "Productivity in 2025",
+    "date": "2025-07-25",
     "content": "Productivity isn't about doing more; it's about doing what matters. In this article, we explore frameworks and mental models to help you focus on the important tasks.\n\n> The key is not to prioritize what's on your schedule, but to schedule your priorities."
   },
   {
     "id": "article-3",
     "title": "A Guide to User Empathy",
+    "date": "2025-07-24",
     "content": "Building great products starts with understanding your users. This guide covers techniques for developing deep user empathy.\n\n![Empathy Map](https://placehold.co/600x400/eee/31343C?text=Empathy%20Map)\n\nWe'll cover:\n1.  Conducting User Interviews\n2.  Creating Personas\n3.  Journey Mapping"
+  },
+  {
+    "id": "article-4",
+    "title": "The Rise of AI in Product Management",
+    "date": "2025-07-23",
+    "content": "Artificial Intelligence is no longer a futuristic concept; it's a tool that's reshaping industries. This article explores how AI is changing the landscape of product management."
+  },
+  {
+    "id": "article-5",
+    "title": "Designing for Accessibility",
+    "date": "2025-07-22",
+    "content": "Accessibility is not a feature, it's a fundamental part of good design. Learn the principles of accessible design and how to create products that are usable by everyone."
+  },
+  {
+    "id": "article-6",
+    "title": "My Favorite VS Code Extensions",
+    "date": "2025-07-21",
+    "content": "A curated list of Visual Studio Code extensions that have significantly improved my development workflow and productivity."
+  },
+  {
+    "id": "article-7",
+    "title": "An Introduction to Design Systems",
+    "date": "2025-07-20",
+    "content": "What is a design system and why should your company have one? This post breaks down the basics and provides a roadmap for getting started."
   }
 ]
