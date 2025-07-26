@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Articles - Harshit's Nest</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
     <script>
       (function () {
         const theme = localStorage.getItem("theme");
@@ -37,9 +38,8 @@
                     <!-- List will be populated by script -->
                 </ul>
             </aside>
-            <section class="subpage-content">
-                <h1>Article Title</h1>
-                <p>This is where the content of the selected article will go.</p>
+            <section id="subpage-content-area" class="subpage-content">
+                <!-- Content will be populated by script -->
             </section>
         </div>
     </main>
