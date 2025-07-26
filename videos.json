@@ -1,17 +1,32 @@
 [
   {
     "id": "video-1",
-    "title": "Kurzgesagt: The Egg",
-    "content": "A mind-bending animated short story about the nature of the universe and our place in it. It's a beautiful and thought-provoking piece of animation."
+    "title": "TED-Ed: How do vaccines work?",
+    "date": "2025-07-26",
+    "description": "An animated lesson explaining the science behind how vaccines protect us from diseases."
   },
   {
     "id": "video-2",
-    "title": "Vsauce: What is random?",
-    "content": "An exploration of the concept of randomness and whether true randomness actually exists. Michael Stevens takes you on a fascinating journey through science and philosophy."
+    "title": "Kurzgesagt: The Egg",
+    "date": "2025-07-25",
+    "description": "A mind-bending animated short story about the nature of the universe and our place in it."
   },
   {
     "id": "video-3",
+    "title": "Vsauce: What is random?",
+    "date": "2025-07-24",
+    "description": "An exploration of the concept of randomness and whether true randomness actually exists."
+  },
+  {
+    "id": "video-4",
     "title": "MKBHD: The State of Foldable Phones",
-    "content": "A deep dive into the current technology and future potential of foldable smartphones, from one of the most respected tech reviewers on the planet."
+    "date": "2025-07-23",
+    "description": "A deep dive into the current technology and future potential of foldable smartphones."
+  },
+  {
+    "id": "video-5",
+    "title": "CaseyNeistat: The $21,000 First Class Airplane Seat",
+    "date": "2025-07-22",
+    "description": "A viral vlog showcasing the luxurious experience of a first-class flight."
   }
 ]
