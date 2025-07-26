@@ -86,25 +86,25 @@ const allLibraryBooks = [
 
 const consumingContent = {
     movies: [
-        'The Shawshank Redemption',
-        'The Godfather',
-        'The Dark Knight',
-        'Pulp Fiction',
-        'Forrest Gump'
+        { title: 'The Shawshank Redemption', description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.' },
+        { title: 'The Godfather', description: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.' },
+        { title: 'The Dark Knight', description: 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.' },
+        { title: 'Pulp Fiction', description: 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.' },
+        { title: 'Forrest Gump', description: 'The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.' }
     ],
     series: [
-        'Breaking Bad',
-        'Game of Thrones',
-        'The Sopranos',
-        'Friends',
-        'The Office'
+        { title: 'Breaking Bad', description: 'A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family\'s future.' },
+        { title: 'Game of Thrones', description: 'Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.' },
+        { title: 'The Sopranos', description: 'New Jersey mob boss Tony Soprano deals with personal and professional issues in his home and business life that affect his mental state, leading him to seek professional psychiatric counseling.' },
+        { title: 'Friends', description: 'Follows the personal and professional lives of six twenty to thirty-something-year-old friends living in Manhattan.' },
+        { title: 'The Office', description: 'A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium.' }
     ],
     videos: [
-        'TED-Ed: How do vaccines work?',
-        'Kurzgesagt: The Egg',
-        'Vsauce: What is random?',
-        'MKBHD: The State of Foldable Phones',
-        'CaseyNeistat: The $21,000 First Class Airplane Seat'
+        { title: 'TED-Ed: How do vaccines work?', description: 'An animated lesson explaining the science behind how vaccines protect us from diseases.' },
+        { title: 'Kurzgesagt: The Egg', description: 'A mind-bending animated short story about the nature of the universe and our place in it.' },
+        { title: 'Vsauce: What is random?', description: 'An exploration of the concept of randomness and whether true randomness actually exists.' },
+        { title: 'MKBHD: The State of Foldable Phones', description: 'A deep dive into the current technology and future potential of foldable smartphones.' },
+        { title: 'CaseyNeistat: The $21,000 First Class Airplane Seat', description: 'A viral vlog showcasing the luxurious experience of a first-class flight.' }
     ]
 };
 
@@ -170,7 +170,10 @@ function handleConsumingTabs() {
         const ul = document.createElement('ul');
         content.forEach(item => {
             const li = document.createElement('li');
-            li.textContent = item;
+            li.innerHTML = `
+                <h3>${item.title}</h3>
+                <p class="consuming-item-description">${item.description}</p>
+            `;
             ul.appendChild(li);
         });
         
