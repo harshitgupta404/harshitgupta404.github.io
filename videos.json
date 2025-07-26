@@ -1,0 +1,17 @@
+[
+  {
+    "id": "video-1",
+    "title": "Kurzgesagt: The Egg",
+    "content": "A mind-bending animated short story about the nature of the universe and our place in it. It's a beautiful and thought-provoking piece of animation."
+  },
+  {
+    "id": "video-2",
+    "title": "Vsauce: What is random?",
+    "content": "An exploration of the concept of randomness and whether true randomness actually exists. Michael Stevens takes you on a fascinating journey through science and philosophy."
+  },
+  {
+    "id": "video-3",
+    "title": "MKBHD: The State of Foldable Phones",
+    "content": "A deep dive into the current technology and future potential of foldable smartphones, from one of the most respected tech reviewers on the planet."
+  }
+]
