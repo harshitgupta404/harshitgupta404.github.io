@@ -108,16 +108,6 @@ const consumingContent = {
     ]
 };
 
-const subpageNavData = {
-    articles: ['Article 1', 'Article 2', 'Article 3', 'Article 4', 'Article 5'],
-    notes: ['Note 1', 'Note 2', 'Note 3', 'Note 4', 'Note 5'],
-    mantras: ['Mantra 1', 'Mantra 2', 'Mantra 3', 'Mantra 4', 'Mantra 5'],
-    books: ['Book 1', 'Book 2', 'Book 3', 'Book 4', 'Book 5'],
-    movies: ['Movie 1', 'Movie 2', 'Movie 3', 'Movie 4', 'Movie 5'],
-    series: ['Series 1', 'Series 2', 'Series 3', 'Series 4', 'Series 5'],
-    videos: ['Video 1', 'Video 2', 'Video 3', 'Video 4', 'Video 5'],
-};
-
 // Function to load article cards into the grid
 function loadArticleGrid() {
   const container = document.getElementById("latest-articles-grid");
@@ -211,20 +201,32 @@ function handleConsumingTabs() {
     }
 }
 
-// Function to populate subpage navigation
-function populateSubpageNav() {
+// New function to load content for subpages like Notes, Articles, etc.
+async function loadSubpageContent() {
     const navContainer = document.getElementById('subpage-nav-list');
-    if (!navContainer) return;
+    const contentContainer = document.getElementById('subpage-content-area');
+
+    if (!navContainer || !contentContainer) return;
 
     const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
-    const navItems = subpageNavData[currentPage];
+    const jsonFile = `${currentPage}.json`;
 
-    if (navItems) {
-        navItems.forEach((item, index) => {
+    try {
+        const response = await fetch(jsonFile);
+        if (!response.ok) {
+            contentContainer.innerHTML = `<p>Could not load content. Please check if ${jsonFile} exists.</p>`;
+            return;
+        }
+        const data = await response.json();
+        const converter = new showdown.Converter();
+
+        // Populate sidebar
+        navContainer.innerHTML = '';
+        data.forEach((item, index) => {
             const li = document.createElement('li');
             const a = document.createElement('a');
-            a.href = '#';
-            a.textContent = item;
+            a.href = `#${item.id}`;
+            a.textContent = item.title;
             if (index === 0) {
                 a.classList.add('active');
             }
@@ -232,16 +234,38 @@ function populateSubpageNav() {
             navContainer.appendChild(li);
         });
 
+        // Function to render content
+        const renderContent = (id) => {
+            const item = data.find(d => d.id === id);
+            if (item) {
+                const html = converter.makeHtml(item.content);
+                contentContainer.innerHTML = `<h1>${item.title}</h1>${html}`;
+            }
+        };
+
+        // Add click listeners to sidebar links
         const navLinks = navContainer.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 navLinks.forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
+                const id = link.getAttribute('href').substring(1);
+                renderContent(id);
             });
         });
+
+        // Initial render of the first item
+        if (data.length > 0) {
+            renderContent(data[0].id);
+        }
+
+    } catch (error) {
+        console.error('Error fetching or parsing content:', error);
+        contentContainer.innerHTML = '<p>An error occurred while loading the content.</p>';
     }
 }
+
 
 // Run functions when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -250,5 +274,5 @@ document.addEventListener('DOMContentLoaded', () => {
   loadRecentNotes();
   loadBooks();
   handleConsumingTabs();
-  populateSubpageNav();
+  loadSubpageContent();
 });
