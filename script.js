@@ -37,10 +37,13 @@ const gridArticles = [
     { date: 'Jul 21, 2025', title: 'Touch Typing' },
 ];
 
-const popularPosts = [
-    { title: 'Phone', date: 'May 17, 2024' },
-    { title: 'Plain Text', date: 'Oct 10, 2022' },
-    { title: 'Steve Jobs at home in 1982', date: 'Dec 27, 2021' }
+const recentNotes = [
+    { title: 'The Art of Saying No', date: 'Jul 15, 2025' },
+    { title: 'On Finding Your Ikigai', date: 'Jul 10, 2025' },
+    { title: 'Lessons from a Year of Remote Work', date: 'Jul 05, 2025' },
+    { title: 'The Power of Unlearning', date: 'Jun 28, 2025' },
+    { title: 'Mental Models for Product Managers', date: 'Jun 20, 2025' },
+    { title: 'A Guide to Mindful Journaling', date: 'Jun 15, 2025' },
 ];
 
 const allLibraryBooks = [
@@ -79,21 +82,31 @@ const allLibraryBooks = [
         status: 'completed',
         statusText: 'Finished reading'
     },
-    { 
-        title: 'A Study of History', 
-        author: 'Arnold J. Toynbee',
-        description: 'a comprehensive analysis of the rise and fall of civilizations',
-        status: 'completed',
-        statusText: 'Finished reading'
-    },
-    { 
-        title: 'On Liberty', 
-        author: 'John Stuart Mill',
-        description: 'a philosophical great advocating for individual freedom',
-        status: 'completed',
-        statusText: 'Finished reading'
-    }
 ];
+
+const consumingContent = {
+    movies: [
+        'The Shawshank Redemption',
+        'The Godfather',
+        'The Dark Knight',
+        'Pulp Fiction',
+        'Forrest Gump'
+    ],
+    series: [
+        'Breaking Bad',
+        'Game of Thrones',
+        'The Sopranos',
+        'Friends',
+        'The Office'
+    ],
+    videos: [
+        'TED-Ed: How do vaccines work?',
+        'Kurzgesagt: The Egg',
+        'Vsauce: What is random?',
+        'MKBHD: The State of Foldable Phones',
+        'CaseyNeistat: The $21,000 First Class Airplane Seat'
+    ]
+};
 
 // Function to load article cards into the grid
 function loadArticleGrid() {
@@ -108,13 +121,13 @@ function loadArticleGrid() {
   }
 }
 
-// Function to load popular posts
-function loadPopularPosts() {
-    const container = document.getElementById('popular-posts-list');
+// Function to load recent notes
+function loadRecentNotes() {
+    const container = document.getElementById('recent-notes-list');
     if(container) {
-        popularPosts.forEach(post => {
+        recentNotes.forEach(note => {
             const li = document.createElement('li');
-            li.innerHTML = `<a href="#">${post.title}</a><span class="date">${post.date}</span>`;
+            li.innerHTML = `<a href="#">${note.title}</a><span class="date">${note.date}</span>`;
             container.appendChild(li);
         });
     }
@@ -124,12 +137,7 @@ function loadPopularPosts() {
 function loadBooks() {
     const container = document.getElementById('library-section');
     if(container) {
-        // Filter books for the homepage view
-        const yetToStart = allLibraryBooks.filter(book => book.status === 'yet-to-start').slice(0, 1);
-        const reading = allLibraryBooks.filter(book => book.status === 'reading').slice(0, 2);
-        const completed = allLibraryBooks.filter(book => book.status === 'completed').slice(0, 2);
-        
-        const booksToShow = [...yetToStart, ...reading, ...completed];
+        const booksToShow = allLibraryBooks;
 
         booksToShow.forEach(book => {
             const item = document.createElement('div');
@@ -150,10 +158,51 @@ function loadBooks() {
     }
 }
 
+// Function to handle the "Content I've been consuming" tabs
+function handleConsumingTabs() {
+    const tabs = document.querySelectorAll('.tab-link');
+    const contentContainer = document.getElementById('consuming-content');
+
+    function renderContent(tab) {
+        const content = consumingContent[tab];
+        if (!content) return;
+
+        const ul = document.createElement('ul');
+        content.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            ul.appendChild(li);
+        });
+        
+        const viewAllLink = document.createElement('a');
+        viewAllLink.className = 'read-more-link';
+        viewAllLink.href = `${tab}.html`;
+        viewAllLink.textContent = `View all ${tab}`;
+
+        contentContainer.innerHTML = '';
+        contentContainer.appendChild(ul);
+        contentContainer.appendChild(viewAllLink);
+    }
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            renderContent(tab.dataset.tab);
+        });
+    });
+
+    // Initial render
+    if (tabs.length > 0) {
+        renderContent('movies');
+    }
+}
+
 // Run functions when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   handleActiveNav(); 
   loadArticleGrid();
-  loadPopularPosts();
+  loadRecentNotes();
   loadBooks();
+  handleConsumingTabs();
 });
