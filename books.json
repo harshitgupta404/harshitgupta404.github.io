@@ -48,15 +48,5 @@
     "statusText": "Finished reading",
     "summary": "A poignant memoir exploring grief and loss.",
     "content": "A poignant memoir exploring grief and loss. **Joan Didion's** writing is sharp, incisive, and deeply moving."
-  },
-    {
-    "id": "book-6",
-    "title": "How PM's win with Data",
-    "author": "Harshit Nagendra Gupta",
-    "date": "2025-07-25",
-    "status": "yet-to-start",
-    "statusText": "Yet to start",
-    "summary": "A book on how PMs can win with data",
-    "content": "Loading soon....."
   }
 ]
