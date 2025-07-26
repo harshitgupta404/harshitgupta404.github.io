@@ -1,0 +1,17 @@
+[
+  {
+    "id": "article-1",
+    "title": "How I Built This Website",
+    "content": "This is the story of how this website was created, from the initial design inspiration to the final code. It's a journey through modern web development with a focus on simplicity and performance.\n\n### The Stack\n* **HTML5** for structure\n* **CSS3** for styling\n* **JavaScript (ES6)** for interactivity"
+  },
+  {
+    "id": "article-2",
+    "title": "Productivity in 2025",
+    "content": "Productivity isn't about doing more; it's about doing what matters. In this article, we explore frameworks and mental models to help you focus on the important tasks.\n\n> The key is not to prioritize what's on your schedule, but to schedule your priorities."
+  },
+  {
+    "id": "article-3",
+    "title": "A Guide to User Empathy",
+    "content": "Building great products starts with understanding your users. This guide covers techniques for developing deep user empathy.\n\n![Empathy Map](https://placehold.co/600x400/eee/31343C?text=Empathy%20Map)\n\nWe'll cover:\n1.  Conducting User Interviews\n2.  Creating Personas\n3.  Journey Mapping"
+  }
+]
