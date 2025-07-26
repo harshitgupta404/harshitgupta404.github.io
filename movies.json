@@ -2,16 +2,31 @@
   {
     "id": "movie-1",
     "title": "The Shawshank Redemption",
-    "content": "An iconic film about hope and friendship. Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."
+    "date": "2025-07-26",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."
   },
   {
     "id": "movie-2",
     "title": "The Godfather",
-    "content": "A masterpiece of filmmaking. The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."
+    "date": "2025-07-25",
+    "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son."
   },
   {
     "id": "movie-3",
+    "title": "The Dark Knight",
+    "date": "2025-07-24",
+    "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice."
+  },
+  {
+    "id": "movie-4",
     "title": "Pulp Fiction",
-    "content": "A non-linear crime film that redefined independent cinema in the 90s. The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption."
+    "date": "2025-07-23",
+    "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption."
+  },
+  {
+    "id": "movie-5",
+    "title": "Forrest Gump",
+    "date": "2025-07-22",
+    "description": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart."
   }
 ]
