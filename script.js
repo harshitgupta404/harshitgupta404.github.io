@@ -81,7 +81,7 @@ async function loadRecentNotes() {
 
 // Function to load books into the library section
 async function loadBooks() {
-    const container = document.getElementById('library-list'); // Changed selector
+    const container = document.getElementById('library-list');
     if(container) {
         try {
             const response = await fetch('books.json');
@@ -93,7 +93,7 @@ async function loadBooks() {
             
             const booksToShow = [...yetToStart, ...reading, ...completed];
 
-            container.innerHTML = ''; // This now only clears the list, not the heading
+            container.innerHTML = '';
             booksToShow.forEach(book => {
                 const item = document.createElement('div');
                 item.className = 'book-item';
@@ -218,6 +218,10 @@ async function loadSubpageContent() {
                 const id = link.getAttribute('href');
                 history.pushState(null, null, id);
                 renderContent();
+                // Close drawer on mobile after clicking a link
+                if (window.innerWidth <= 992) {
+                    document.body.classList.remove('drawer-open');
+                }
             });
         });
         
@@ -231,6 +235,21 @@ async function loadSubpageContent() {
     }
 }
 
+// Function to handle the mobile navigation drawer
+function handleMobileNavDrawer() {
+    const toggleButton = document.querySelector('.mobile-nav-toggle');
+    const overlay = document.querySelector('.sidebar-overlay');
+
+    if (toggleButton && overlay) {
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('drawer-open');
+        });
+
+        overlay.addEventListener('click', () => {
+            document.body.classList.remove('drawer-open');
+        });
+    }
+}
 
 // Run functions when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -240,4 +259,5 @@ document.addEventListener('DOMContentLoaded', () => {
   loadBooks();
   handleConsumingTabs();
   loadSubpageContent();
+  handleMobileNavDrawer();
 });
