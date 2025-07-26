@@ -59,8 +59,6 @@ Navigation Pill Styles (Inverted Theme)
   border-radius: 9999px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s;
-
-  /* Light Theme: Dark Header */
   background-color: #000;
 }
 
@@ -72,8 +70,6 @@ Navigation Pill Styles (Inverted Theme)
   border-radius: 9999px;
   white-space: nowrap;
   transition: color 0.2s, background-color 0.2s;
-
-  /* Light Theme: Light Text */
   color: #a0a0a0;
 }
 
@@ -86,14 +82,13 @@ Navigation Pill Styles (Inverted Theme)
   color: #fff;
 }
 
-/* Dark Theme: Light Header */
 html.dark .nav-pill {
-  background-color: #f0f0f0; /* Light background for the pill */
+  background-color: #f0f0f0;
   box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
 }
 
 html.dark .nav-pill a {
-  color: #555; /* Dark text for links */
+  color: #555;
 }
 
 html.dark .nav-pill a:hover {
@@ -119,8 +114,6 @@ Theme Toggle Button
   padding: 0.5rem;
   border-radius: 50%;
   transition: color 0.3s, background-color 0.2s;
-
-  /* Style for light theme */
   color: #555;
 }
 
@@ -128,7 +121,6 @@ Theme Toggle Button
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* Style for dark theme */
 html.dark .theme-toggle {
   color: #aaa;
 }
@@ -142,75 +134,242 @@ html.dark .theme-toggle:hover {
   height: 20px;
 }
 
-/* Logic to show the correct icon based on the theme */
-.moon-icon {
-  display: none;
-}
-.sun-icon {
-  display: block;
-}
-
-html.dark .moon-icon {
-  display: block;
-}
-html.dark .sun-icon {
-  display: none;
-}
+.moon-icon { display: none; }
+.sun-icon { display: block; }
+html.dark .moon-icon { display: block; }
+html.dark .sun-icon { display: none; }
 
 /* ========================================
 Main Content Styles
 ========================================
 */
 .main {
-  flex-grow: 1; /* Ensures the main content takes up available space */
+  flex-grow: 1;
+  width: 100%;
   padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Center content on all pages except the homepage */
+body:not(.homepage) .main {
   max-width: 720px;
   margin: 0 auto;
-  width: 100%;
 }
 
-.intro,
-.articles,
-.notes,
-.contact {
-  margin-bottom: 3rem;
+/* Homepage specific layout */
+.homepage .main {
+  max-width: 1200px;
+  margin: 0 auto; /* This will center the 1200px container */
 }
 
-h1,
-h2 {
-  margin-bottom: 1rem;
+.intro-full-width {
+    margin-bottom: 3rem;
+    text-align: left;
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
+.intro-full-width h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
 }
 
-ul li {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #e0e0e0;
-  transition: border-color 0.3s;
+.intro-full-width .adventure-statement {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 900px;
 }
 
-ul li:first-child {
-  border-top: 1px solid #e0e0e0;
+html.dark .intro-full-width .adventure-statement {
+    color: #bbb;
 }
 
-html.dark ul li {
-  border-color: #333;
+.content-wrapper {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
 }
 
-a {
-  color: #0070f3;
-  text-decoration: none;
+.main-content {
+    flex: 3;
 }
 
-a:hover {
-  text-decoration: underline;
+.sidebar {
+    flex: 1;
+    position: sticky;
+    top: 2rem;
 }
 
-html.dark a {
-  color: #4dabf7;
+.writing-intro {
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+html.dark .writing-intro {
+    color: #bbb;
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.article-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+html.dark .article-card {
+    background-color: #1e1e1e;
+    border-color: #333;
+}
+
+.article-card .date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+html.dark .article-card .date {
+    color: #777;
+}
+
+.article-card h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.popular-posts h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+html.dark .popular-posts h2 {
+    color: #bbb;
+}
+
+.popular-posts ul {
+    list-style: none;
+    padding: 0;
+}
+
+.popular-posts li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.popular-posts li a {
+    text-decoration: none;
+    color: #111;
+}
+
+html.dark .popular-posts li a {
+     color: #eee;
+}
+
+.popular-posts li .date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-left: 0.5rem;
+}
+
+html.dark .popular-posts li .date {
+    color: #777;
+}
+
+/* ========================================
+Library Section (Sidebar)
+========================================
+*/
+.library-section h2 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #777;
+    margin-bottom: 1.5rem;
+}
+
+html.dark .library-section h2 {
+    color: #888;
+}
+
+.book-item {
+    margin-bottom: 1.25rem; /* Reduced space between books */
+}
+
+.book-item h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 0.25rem 0;
+}
+
+.book-item .book-author {
+    color: #555; /* Same color as adventure statement */
+    font-weight: 400; /* Lighter font weight for author */
+}
+
+html.dark .book-item .book-author {
+    color: #bbb; /* Dark mode color */
+}
+
+.book-item p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.5;
+}
+
+html.dark .book-item p {
+    color: #bbb;
+}
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-weight: 500;
+}
+
+.status-pill .light {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+}
+
+.status-pill.yet-to-start { background-color: #ffebee; color: #c62828; }
+.status-pill.yet-to-start .light { background-color: #e53935; }
+.status-pill.reading { background-color: #fffde7; color: #f9a825; }
+.status-pill.reading .light { background-color: #fdd835; }
+.status-pill.completed { background-color: #e8f5e9; color: #2e7d32; }
+.status-pill.completed .light { background-color: #43a047; }
+
+.read-more-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+    text-decoration: underline;
+}
+
+html.dark .read-more-link {
+    color: #aaa;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
 }
 
 /* ========================================
@@ -221,7 +380,7 @@ Footer Styles
   text-align: center;
   padding: 4rem 2rem 2rem;
   font-size: 0.9rem;
-  color: #777; /* Default text color for light theme */
+  color: #777;
   transition: color 0.3s;
 }
 
@@ -242,7 +401,7 @@ Footer Styles
 
 .footer-links a:hover {
   border-bottom-color: #555;
-  text-decoration: none; /* remove default underline on hover */
+  text-decoration: none;
 }
 
 .footer-copyright p {
@@ -252,19 +411,40 @@ Footer Styles
   transition: color 0.3s;
 }
 
-/* Theme specific colors for the footer */
-html.dark .footer {
-  color: #888;
+html.dark .footer { color: #888; }
+html.dark .footer-links a { color: #aaa; }
+html.dark .footer-links a:hover { border-bottom-color: #aaa; }
+html.dark .footer-copyright p { color: #777; }
+
+/* ========================================
+Responsive Adjustments
+========================================
+*/
+@media (max-width: 992px) {
+    .content-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .sidebar {
+        position: static;
+        width: 100%;
+    }
 }
 
-html.dark .footer-links a {
-  color: #aaa;
+@media (max-width: 768px) {
+    .article-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-html.dark .footer-links a:hover {
-  border-bottom-color: #aaa;
-}
-
-html.dark .footer-copyright p {
-  color: #777;
+@media (max-width: 576px) {
+    .article-grid {
+        grid-template-columns: 1fr;
+    }
+    .intro-full-width h1 {
+        font-size: 2rem;
+    }
+    .intro-full-width .adventure-statement {
+        font-size: 1.1rem;
+    }
 }
