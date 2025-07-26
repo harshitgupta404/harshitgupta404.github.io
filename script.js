@@ -108,6 +108,16 @@ const consumingContent = {
     ]
 };
 
+const subpageNavData = {
+    articles: ['Article 1', 'Article 2', 'Article 3', 'Article 4', 'Article 5'],
+    notes: ['Note 1', 'Note 2', 'Note 3', 'Note 4', 'Note 5'],
+    mantras: ['Mantra 1', 'Mantra 2', 'Mantra 3', 'Mantra 4', 'Mantra 5'],
+    books: ['Book 1', 'Book 2', 'Book 3', 'Book 4', 'Book 5'],
+    movies: ['Movie 1', 'Movie 2', 'Movie 3', 'Movie 4', 'Movie 5'],
+    series: ['Series 1', 'Series 2', 'Series 3', 'Series 4', 'Series 5'],
+    videos: ['Video 1', 'Video 2', 'Video 3', 'Video 4', 'Video 5'],
+};
+
 // Function to load article cards into the grid
 function loadArticleGrid() {
   const container = document.getElementById("latest-articles-grid");
@@ -201,6 +211,38 @@ function handleConsumingTabs() {
     }
 }
 
+// Function to populate subpage navigation
+function populateSubpageNav() {
+    const navContainer = document.getElementById('subpage-nav-list');
+    if (!navContainer) return;
+
+    const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+    const navItems = subpageNavData[currentPage];
+
+    if (navItems) {
+        navItems.forEach((item, index) => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = '#';
+            a.textContent = item;
+            if (index === 0) {
+                a.classList.add('active');
+            }
+            li.appendChild(a);
+            navContainer.appendChild(li);
+        });
+
+        const navLinks = navContainer.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    }
+}
+
 // Run functions when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   handleActiveNav(); 
@@ -208,4 +250,5 @@ document.addEventListener('DOMContentLoaded', () => {
   loadRecentNotes();
   loadBooks();
   handleConsumingTabs();
+  populateSubpageNav();
 });
