@@ -1,0 +1,17 @@
+[
+  {
+    "id": "book-1",
+    "title": "Capitalism, Socialism, and Democracy",
+    "content": "A seminal work by **Joseph A. Schumpeter** that introduces the concept of 'creative destruction.' It's a deep dive into the dynamics of capitalism and its relationship with society."
+  },
+  {
+    "id": "book-2",
+    "title": "In Search of Lost Time",
+    "content": "Written by **Marcel Proust**, this is a monumental novel exploring memory, time, and identity. It's considered one of the most profound works of literature ever written."
+  },
+  {
+    "id": "book-3",
+    "title": "Walden",
+    "content": "By **Henry David Thoreau**, this book is a reflective account of simple living in natural surroundings. It's a classic text on self-reliance and the importance of connecting with nature."
+  }
+]
