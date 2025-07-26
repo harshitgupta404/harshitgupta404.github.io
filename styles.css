@@ -150,11 +150,6 @@ Main Content Styles
   box-sizing: border-box;
 }
 
-body:not(.homepage) .main {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
 .homepage .main {
   max-width: 1200px;
   margin: 0 auto;
@@ -412,15 +407,14 @@ Bottom Content Wrapper
     align-items: flex-start;
     margin-top: 4rem;
     padding-top: 4rem;
-    /* border-top removed */
 }
 
 .connect-section {
-    flex: 1; /* Takes up 1/4 of the space */
+    flex: 1;
 }
 
 .consuming-section {
-    flex: 3; /* Takes up 3/4 of the space */
+    flex: 3;
 }
 
 .connect-section h2, .consuming-section h2 {
@@ -504,6 +498,59 @@ html.dark .consuming-item-description {
     color: #bbb;
 }
 
+/* ========================================
+Subpage Layout
+========================================
+*/
+.subpage-wrapper {
+    display: flex;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.subpage-sidebar {
+    flex: 1;
+    min-width: 200px;
+}
+
+.subpage-sidebar h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.subpage-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.subpage-nav a {
+    display: block;
+    padding: 0.6rem 0;
+    text-decoration: none;
+    color: #555;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+html.dark .subpage-nav a {
+    color: #bbb;
+    border-bottom-color: #333;
+}
+
+.subpage-nav a.active {
+    font-weight: 600;
+    color: #111;
+}
+
+html.dark .subpage-nav a.active {
+    color: #fff;
+}
+
+.subpage-content {
+    flex: 3;
+}
 
 /* ========================================
 Footer Styles
@@ -554,13 +601,16 @@ Responsive Adjustments
 ========================================
 */
 @media (max-width: 992px) {
-    .content-wrapper, .bottom-content-wrapper {
+    .content-wrapper, .bottom-content-wrapper, .subpage-wrapper {
         flex-direction: column;
         gap: 2rem;
     }
     .sidebar {
         position: static;
         width: 100%;
+    }
+    .consuming-section {
+        order: -1; /* Move this section before the connect section on mobile */
     }
 }
 
