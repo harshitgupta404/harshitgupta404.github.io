@@ -7,13 +7,13 @@ body {
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0; /* Light gray background */
+  background-color: #f0f0f0; /* Light theme background */
   color: #111;
   transition: background-color 0.3s, color 0.3s;
 }
 
-body.dark {
-  background-color: #121212;
+html.dark body {
+  background-color: #121212; /* Dark theme background */
   color: #eee;
 }
 
@@ -25,59 +25,81 @@ Header Styles
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  flex-wrap: wrap;
   padding: 1.5rem 2rem;
-  gap: 1.5rem; /* Space between logo and nav pill */
+  gap: 1.5rem;
 }
 
 .logo {
-  font-size: 2.2rem; /* Adjusted size for the character */
-  font-weight: bold; /* Bolder for the character */
+  font-size: 2.2rem;
+  font-weight: bold;
   cursor: pointer;
   color: #333;
   transition: color 0.3s;
 }
 
-body.dark .logo {
+html.dark .logo {
   color: #ccc;
 }
 
-/* The main navigation container with the pill shape */
+/* ========================================
+Navigation Pill Styles (Inverted Theme)
+========================================
+*/
 .nav-pill {
   display: flex;
-  flex-wrap: wrap; /* Allow nav items to wrap */
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 0.25rem; /* Reduced gap for more items */
-  background-color: #000;
+  gap: 0.25rem;
   padding: 0.6rem;
   border-radius: 9999px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+  transition: background-color 0.3s;
 
-body.dark .nav-pill {
-  background-color: #252525;
+  /* Light Theme: Dark Header */
+  background-color: #000;
 }
 
 .nav-pill a {
-  padding: 0.5rem 0.9rem; /* Adjusted padding */
+  padding: 0.5rem 0.9rem;
   text-decoration: none;
-  color: #a0a0a0;
-  font-size: 0.85rem; /* Slightly smaller font for more items */
+  font-size: 0.85rem;
   font-weight: 500;
   border-radius: 9999px;
+  white-space: nowrap;
   transition: color 0.2s, background-color 0.2s;
-  white-space: nowrap; /* Prevent text from breaking */
+
+  /* Light Theme: Light Text */
+  color: #a0a0a0;
 }
 
 .nav-pill a:hover {
   color: #fff;
 }
 
-/* Style for the currently active page link */
 .nav-pill a.active {
   background-color: #333;
   color: #fff;
+}
+
+/* Dark Theme: Light Header */
+html.dark .nav-pill {
+  background-color: #f0f0f0; /* Light background for the pill */
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
+}
+
+html.dark .nav-pill a {
+  color: #555; /* Dark text for links */
+}
+
+html.dark .nav-pill a:hover {
+  color: #000;
+}
+
+html.dark .nav-pill a.active {
+  background-color: #ddd;
+  color: #000;
 }
 
 /* ========================================
@@ -92,19 +114,29 @@ Theme Toggle Button
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
-  margin-left: 0.25rem;
   border-radius: 50%;
-  color: #a0a0a0;
-  transition: color 0.2s, background-color 0.2s;
+  transition: color 0.3s, background-color 0.2s;
+
+  /* Style for light theme */
+  color: #555;
 }
 
 .theme-toggle:hover {
-  color: #fff;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Style for dark theme */
+html.dark .theme-toggle {
+  color: #aaa;
+}
+
+html.dark .theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .theme-toggle svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 /* Logic to show the correct icon based on the theme */
@@ -115,10 +147,10 @@ Theme Toggle Button
   display: block;
 }
 
-body.dark .moon-icon {
+html.dark .moon-icon {
   display: block;
 }
-body.dark .sun-icon {
+html.dark .sun-icon {
   display: none;
 }
 
@@ -145,7 +177,7 @@ h2 {
 }
 
 ul {
-  list-style: none; /* Removing default list style for a cleaner look */
+  list-style: none;
   padding-left: 0;
 }
 
@@ -159,7 +191,7 @@ ul li:first-child {
   border-top: 1px solid #e0e0e0;
 }
 
-body.dark ul li {
+html.dark ul li {
   border-color: #333;
 }
 
@@ -172,6 +204,6 @@ a:hover {
   text-decoration: underline;
 }
 
-body.dark a {
+html.dark a {
   color: #4dabf7;
 }
