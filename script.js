@@ -19,10 +19,12 @@ function goHome() {
 // Function to handle the active state of navigation links based on the current page
 function handleActiveNav() {
   const navLinks = document.querySelectorAll('.nav-pill a');
+  // Get the current page's file name (e.g., "articles.html")
   const currentPage = window.location.pathname.split('/').pop();
 
   navLinks.forEach(link => {
     const linkPage = link.getAttribute('href');
+    // If the link's href matches the current page, add the 'active' class
     if (linkPage === currentPage) {
       link.classList.add('active');
     }
