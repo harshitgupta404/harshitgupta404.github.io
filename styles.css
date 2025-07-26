@@ -668,17 +668,97 @@ html.dark .footer-copyright p { color: #777; }
 Responsive Adjustments
 ========================================
 */
+.mobile-nav-toggle {
+    display: none;
+}
+
+.sidebar-overlay {
+    display: none;
+}
+
 @media (max-width: 992px) {
-    .content-wrapper, .bottom-content-wrapper, .subpage-wrapper {
+    .content-wrapper, .bottom-content-wrapper {
         flex-direction: column;
         gap: 2rem;
     }
+
     .sidebar {
         position: static;
         width: 100%;
     }
+
     .consuming-section {
         order: -1;
+    }
+
+    .subpage-wrapper {
+        flex-direction: column;
+    }
+
+    .mobile-nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 0.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        position: fixed;
+        top: 1.5rem;
+        left: 1.5rem;
+        z-index: 1001;
+    }
+
+    html.dark .mobile-nav-toggle {
+        background-color: #222;
+        border-color: #444;
+    }
+    
+    .mobile-nav-toggle + .main {
+        padding-top: 5rem;
+    }
+
+    .subpage-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 280px;
+        background-color: #f8f8f8;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        padding: 4rem 2rem 2rem;
+        box-sizing: border-box;
+        overflow-y: auto;
+        box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+    }
+
+    html.dark .subpage-sidebar {
+        background-color: #1a1a1a;
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+
+    body.drawer-open .subpage-sidebar {
+        transform: translateX(0);
+    }
+
+    body.drawer-open .sidebar-overlay {
+        opacity: 1;
+        visibility: visible;
     }
 }
 
