@@ -16,25 +16,20 @@ function goHome() {
   window.location.href = "index.html";
 }
 
-// Function to handle the active state of navigation links
+// Function to handle the active state of navigation links based on the current page
 function handleActiveNav() {
   const navLinks = document.querySelectorAll('.nav-pill a');
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-      // Prevent default link behavior for this example
-      event.preventDefault(); 
+  const currentPage = window.location.pathname.split('/').pop();
 
-      // Remove active class from all links
-      navLinks.forEach(navLink => navLink.classList.remove('active'));
-      
-      // Add active class to the clicked link
-      this.classList.add('active');
-    });
+  navLinks.forEach(link => {
+    const linkPage = link.getAttribute('href');
+    if (linkPage === currentPage) {
+      link.classList.add('active');
+    }
   });
 }
 
-// Dummy data for latest articles and notes
+// Dummy data for latest articles and notes (only needed for index.html)
 const articles = [
   "How I built my portfolio site",
   "Designing with performance in mind",
@@ -79,7 +74,10 @@ function loadNotes() {
 
 // Load dynamic content and set up event listeners when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+  // These functions will only run if the corresponding elements exist on the page
   loadArticles();
   loadNotes();
-  handleActiveNav(); // Set up the navigation link handler
+  
+  // This will run on all pages to set the active nav link
+  handleActiveNav(); 
 });
