@@ -8,11 +8,9 @@
     <link rel="stylesheet" href="styles.css" />
     <script>
       // Immediately invoked function to set the theme on initial load
-      // This runs before the body is rendered to prevent a flash of unstyled content.
       (function () {
         const theme = localStorage.getItem("theme");
         if (theme === "dark") {
-          // We apply the class to the <html> element
           document.documentElement.classList.add("dark");
         }
       })();
@@ -20,7 +18,8 @@
   </head>
   <body>
     <!-- 
-      The header structure remains the same.
+      The header structure with reordered navigation links.
+      No link is active by default.
     -->
     <header class="header">
       <div class="logo" onclick="goHome()">ह</div>
@@ -28,7 +27,7 @@
         <a href="#">Articles</a>
         <a href="#">Notes</a>
         <a href="#">Mantras</a>
-        <a href="#" class="active">Archives</a>
+        <a href="#">Archives</a>
         <a href="#">About Me</a>
       </nav>
       <button class="theme-toggle" onclick="toggleTheme()">
