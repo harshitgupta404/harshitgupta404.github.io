@@ -412,15 +412,15 @@ Bottom Content Wrapper
     align-items: flex-start;
     margin-top: 4rem;
     padding-top: 4rem;
-    border-top: 1px solid #e0e0e0;
+    /* border-top removed */
 }
 
-html.dark .bottom-content-wrapper {
-    border-top-color: #333;
+.connect-section {
+    flex: 1; /* Takes up 1/4 of the space */
 }
 
-.connect-section, .consuming-section {
-    flex: 1;
+.consuming-section {
+    flex: 3; /* Takes up 3/4 of the space */
 }
 
 .connect-section h2, .consuming-section h2 {
@@ -483,8 +483,27 @@ html.dark .tab-link.active {
 }
 
 #consuming-content li {
-    padding: 0.4rem 0;
+    padding: 0;
+    margin-bottom: 1.25rem;
 }
+
+#consuming-content h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 0.25rem 0;
+}
+
+.consuming-item-description {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+}
+
+html.dark .consuming-item-description {
+    color: #bbb;
+}
+
 
 /* ========================================
 Footer Styles
