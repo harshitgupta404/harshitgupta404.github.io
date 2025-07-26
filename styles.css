@@ -155,6 +155,11 @@ Main Content Styles
   margin: 0 auto;
 }
 
+.main.single-column {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .intro-full-width {
     margin-bottom: 3rem;
     text-align: left;
