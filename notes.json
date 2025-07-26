@@ -2,26 +2,43 @@
   {
     "id": "note-1",
     "title": "The Art of Saying No",
+    "date": "2025-07-15",
     "content": "Saying **'no'** is not about being negative. It's about prioritizing your time and energy for the things that truly matter. Every 'yes' to something is an implicit 'no' to something else.\n\nLearning to say no gracefully is a superpower. It protects your focus and prevents burnout. It's a declaration of your own value and the value of your time.\n\n### Key Principles:\n1.  Be direct but polite.\n2.  Explain your reasoning briefly.\n3.  Offer an alternative if possible."
   },
   {
     "id": "note-2",
     "title": "On Finding Your Ikigai",
+    "date": "2025-07-10",
     "content": "Ikigai is a Japanese concept that means **'a reason for being.'** It's the intersection of:\n\n* What you love\n* What you're good at\n* What the world needs\n* What you can be paid for\n\n![Ikigai Diagram](https://placehold.co/600x400/eee/31343C?text=Ikigai%20Venn%20Diagram)\n\nFinding your Ikigai is not a destination but a journey of self-exploration. It's about finding joy, purpose, and balance in the daily routine of life."
   },
   {
     "id": "note-3",
     "title": "Lessons from Remote Work",
+    "date": "2025-07-05",
     "content": "Remote work has taught us the importance of **trust, autonomy, and clear communication**. It's not about where you work, but how you work.\n\nThe biggest challenge is creating boundaries between work and personal life. A dedicated workspace and a strict schedule are crucial for maintaining balance and well-being."
   },
   {
     "id": "note-4",
     "title": "The Power of Unlearning",
+    "date": "2025-06-28",
     "content": "In a rapidly changing world, the ability to **unlearn** is as important as the ability to learn. We must be willing to let go of outdated beliefs and mental models to make way for new ones.\n\nUnlearning is not about forgetting; it's about choosing a different way of thinking. It requires humility, curiosity, and the courage to admit you might be wrong."
   },
   {
     "id": "note-5",
     "title": "Mental Models for Product Managers",
+    "date": "2025-06-20",
     "content": "Mental models are frameworks that help us understand the world. For product managers, they are essential tools for making better decisions.\n\nSome useful models include:\n\n* **First Principles Thinking:** Breaking down complex problems into their most basic elements.\n* **Second-Order Thinking:** Thinking about the consequences of the consequences of your decisions.\n* **Circle of Competence:** Understanding the boundaries of your own knowledge."
+  },
+  {
+    "id": "note-6",
+    "title": "A Guide to Mindful Journaling",
+    "date": "2025-06-15",
+    "content": "Journaling is more than just writing down your thoughts. It's a powerful tool for self-reflection, gratitude, and personal growth. This guide explores different journaling techniques to help you get started."
+  },
+  {
+    "id": "note-7",
+    "title": "The Importance of Deep Work",
+    "date": "2025-06-10",
+    "content": "In a world of constant distractions, the ability to focus without distraction on a cognitively demanding task is becoming increasingly rare and valuable. This note explores the concept of 'Deep Work' as popularized by Cal Newport."
   }
 ]
