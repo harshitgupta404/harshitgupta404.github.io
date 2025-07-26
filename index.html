@@ -16,7 +16,7 @@
       })();
     </script>
   </head>
-  <body>
+  <body class="homepage">
     <header class="header">
       <div class="logo" onclick="goHome()">ह</div>
       <nav class="nav-pill">
@@ -35,32 +35,39 @@
     </header>
 
     <main class="main">
-      <section class="intro">
-        <h1>Hello, I’m Harshit 👋</h1>
-        <p>I build things on the internet and write about them.</p>
+      <!-- Intro Section -->
+      <section class="intro-full-width">
+        <h1>Hi, my name is Harshit.</h1>
+        <p class="adventure-statement">I’m on a journey to create beautiful, purposeful products that make the world better for my friends and me. At heart, I’m still a child wandering through a vivid daydream, and in my career, I’m a product manager & a data-grounded strategist.</p>
       </section>
 
-      <section class="articles">
-        <h2>Latest Articles</h2>
-        <ul id="latest-articles">
-          <!-- This section will be populated by the script -->
-        </ul>
-      </section>
+      <!-- Two-column layout -->
+      <div class="content-wrapper">
+        <!-- Main content (left column) -->
+        <div class="main-content">
+            <p class="writing-intro">I've been writing since 2001. I write about technology in general, focusing on design, productivity, and startups. The <a href="archives.html">ARCHIVES</a> has all the articles.</p>
+            
+            <div id="latest-articles-grid" class="article-grid">
+                <!-- This grid will be populated by the script -->
+            </div>
 
-      <section class="notes">
-        <h2>Notes</h2>
-        <ul id="highlight-notes">
-          <!-- This section will be populated by the script -->
-        </ul>
-      </section>
+            <section class="popular-posts">
+                <h2>Some of the popular posts ranked by major search engines.</h2>
+                <ul id="popular-posts-list">
+                    <!-- This list will be populated by the script -->
+                </ul>
+            </section>
+        </div>
 
-      <section class="contact">
-        <h2>Get in touch</h2>
-        <p>
-          Want to reach out? Connect with me at
-          <a href="mailto:hello@harshit.me">hello@harshit.me</a>
-        </p>
-      </section>
+        <!-- Sidebar (right column) -->
+        <aside class="sidebar">
+            <section id="library-section" class="library-section">
+                <h2>Books in my library</h2>
+                <!-- This list will be populated by the script -->
+            </section>
+            <a href="books.html" class="read-more-link">View all books</a>
+        </aside>
+      </div>
     </main>
 
     <footer class="footer">
