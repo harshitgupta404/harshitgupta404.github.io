@@ -27,134 +27,93 @@ function handleActiveNav() {
   });
 }
 
-// Dummy data for the homepage
-const gridArticles = [
-    { date: 'Jul 26, 2025', title: 'Week 30, 2025' },
-    { date: 'Jul 25, 2025', title: 'Stationery' },
-    { date: 'Jul 24, 2025', title: 'Baskerville, Libre Baskerville' },
-    { date: 'Jul 23, 2025', title: 'Sublime Text' },
-    { date: 'Jul 22, 2025', title: 'Productivity Rituals, Patterns, and Processes' },
-    { date: 'Jul 21, 2025', title: 'Touch Typing' },
-];
-
-const recentNotes = [
-    { title: 'The Art of Saying No', date: 'Jul 15, 2025' },
-    { title: 'On Finding Your Ikigai', date: 'Jul 10, 2025' },
-    { title: 'Lessons from a Year of Remote Work', date: 'Jul 05, 2025' },
-    { title: 'The Power of Unlearning', date: 'Jun 28, 2025' },
-    { title: 'Mental Models for Product Managers', date: 'Jun 20, 2025' },
-    { title: 'A Guide to Mindful Journaling', date: 'Jun 15, 2025' },
-];
-
-const allLibraryBooks = [
-    { 
-        title: 'Capitalism, Socialism, and Democracy', 
-        author: 'Joseph A. Schumpeter',
-        description: '',
-        status: 'yet-to-start',
-        statusText: 'Yet to start'
-    },
-    { 
-        title: 'In Search of Lost Time', 
-        author: 'Marcel Proust',
-        description: 'a monumental novel exploring memory, time, and identity',
-        status: 'reading',
-        statusText: 'Currently reading'
-    },
-    { 
-        title: 'Walden', 
-        author: 'Henry David Thoreau',
-        description: 'a reflective account of simple living in natural surroundings',
-        status: 'reading',
-        statusText: 'Currently reading'
-    },
-    { 
-        title: 'If This Is a Man', 
-        author: 'Primo Levi',
-        description: 'a harrowing memoir of his survival in Auschwitz',
-        status: 'completed',
-        statusText: 'Finished reading'
-    },
-    { 
-        title: 'The Year of Magical Thinking', 
-        author: 'Joan Didion',
-        description: 'a poignant memoir exploring grief and loss',
-        status: 'completed',
-        statusText: 'Finished reading'
-    },
-];
-
-const consumingContent = {
-    movies: [
-        { title: 'The Shawshank Redemption', description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.' },
-        { title: 'The Godfather', description: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.' },
-        { title: 'The Dark Knight', description: 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.' },
-        { title: 'Pulp Fiction', description: 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.' },
-        { title: 'Forrest Gump', description: 'The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.' }
-    ],
-    series: [
-        { title: 'Breaking Bad', description: 'A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family\'s future.' },
-        { title: 'Game of Thrones', description: 'Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.' },
-        { title: 'The Sopranos', description: 'New Jersey mob boss Tony Soprano deals with personal and professional issues in his home and business life that affect his mental state, leading him to seek professional psychiatric counseling.' },
-        { title: 'Friends', description: 'Follows the personal and professional lives of six twenty to thirty-something-year-old friends living in Manhattan.' },
-        { title: 'The Office', description: 'A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium.' }
-    ],
-    videos: [
-        { title: 'TED-Ed: How do vaccines work?', description: 'An animated lesson explaining the science behind how vaccines protect us from diseases.' },
-        { title: 'Kurzgesagt: The Egg', description: 'A mind-bending animated short story about the nature of the universe and our place in it.' },
-        { title: 'Vsauce: What is random?', description: 'An exploration of the concept of randomness and whether true randomness actually exists.' },
-        { title: 'MKBHD: The State of Foldable Phones', description: 'A deep dive into the current technology and future potential of foldable smartphones.' },
-        { title: 'CaseyNeistat: The $21,000 First Class Airplane Seat', description: 'A viral vlog showcasing the luxurious experience of a first-class flight.' }
-    ]
-};
-
 // Function to load article cards into the grid
-function loadArticleGrid() {
+async function loadArticleGrid() {
   const container = document.getElementById("latest-articles-grid");
   if (container) {
-    gridArticles.forEach(article => {
-      const card = document.createElement("div");
-      card.className = "article-card";
-      card.innerHTML = `<p class="date">${article.date}</p><h3><a href="#">${article.title}</a></h3>`;
-      container.appendChild(card);
-    });
+    try {
+        const response = await fetch('articles.json');
+        const articles = await response.json();
+
+        const latestArticles = articles.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 6);
+
+        container.innerHTML = '';
+        latestArticles.forEach(article => {
+            const card = document.createElement("div");
+            card.className = "article-card";
+            const formattedDate = new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            card.innerHTML = `
+                <p class="date">${formattedDate}</p>
+                <h3><a href="articles.html#${article.id}">${article.title}</a></h3>
+            `;
+            container.appendChild(card);
+        });
+    } catch (error) {
+        console.error('Error loading articles:', error);
+        container.innerHTML = '<p>Could not load articles.</p>';
+    }
   }
 }
 
 // Function to load recent notes
-function loadRecentNotes() {
+async function loadRecentNotes() {
     const container = document.getElementById('recent-notes-list');
     if(container) {
-        recentNotes.forEach(note => {
-            const li = document.createElement('li');
-            li.innerHTML = `<a href="#">${note.title}</a><span class="date">${note.date}</span>`;
-            container.appendChild(li);
-        });
+        try {
+            const response = await fetch('notes.json');
+            const notes = await response.json();
+
+            const latestNotes = notes.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 6);
+
+            container.innerHTML = '';
+            latestNotes.forEach(note => {
+                const li = document.createElement('li');
+                const formattedDate = new Date(note.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                li.innerHTML = `<a href="notes.html#${note.id}">${note.title}</a><span class="date">${formattedDate}</span>`;
+                container.appendChild(li);
+            });
+        } catch (error) {
+            console.error('Error loading notes:', error);
+            container.innerHTML = '<li>Could not load notes.</li>';
+        }
     }
 }
 
 // Function to load books into the library section
-function loadBooks() {
-    const container = document.getElementById('library-section');
+async function loadBooks() {
+    const container = document.getElementById('library-list'); // Changed selector
     if(container) {
-        const booksToShow = allLibraryBooks;
+        try {
+            const response = await fetch('books.json');
+            const allBooks = await response.json();
 
-        booksToShow.forEach(book => {
-            const item = document.createElement('div');
-            item.className = 'book-item';
+            const yetToStart = allBooks.filter(book => book.status === 'yet-to-start').sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 1);
+            const reading = allBooks.filter(book => book.status === 'reading').sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 2);
+            const completed = allBooks.filter(book => book.status === 'completed').sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 2);
             
-            let descriptionHTML = book.description ? `<p>${book.description}</p>` : '';
+            const booksToShow = [...yetToStart, ...reading, ...completed];
 
-            item.innerHTML = `
-                <h3>${book.title} <span class="book-author">by ${book.author}</span></h3>
-                ${descriptionHTML}
-                <div class="status-pill ${book.status}">
-                    <span class="light"></span>
-                    ${book.statusText}
-                </div>
-            `;
-            container.appendChild(item);
-        });
+            container.innerHTML = ''; // This now only clears the list, not the heading
+            booksToShow.forEach(book => {
+                const item = document.createElement('div');
+                item.className = 'book-item';
+                
+                let summaryHTML = book.summary ? `<p>${book.summary}</p>` : '';
+
+                item.innerHTML = `
+                    <h3><a href="books.html#${book.id}">${book.title}</a> <span class="book-author">by ${book.author}</span></h3>
+                    ${summaryHTML}
+                    <div class="status-pill ${book.status}">
+                        <span class="light"></span>
+                        ${book.statusText}
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        } catch (error) {
+            console.error('Error loading books:', error);
+            container.innerHTML = '<p>Could not load books.</p>';
+        }
     }
 }
 
@@ -163,28 +122,35 @@ function handleConsumingTabs() {
     const tabs = document.querySelectorAll('.tab-link');
     const contentContainer = document.getElementById('consuming-content');
 
-    function renderContent(tab) {
-        const content = consumingContent[tab];
-        if (!content) return;
+    async function renderContent(tab) {
+        try {
+            const response = await fetch(`${tab}.json`);
+            const items = await response.json();
 
-        const ul = document.createElement('ul');
-        content.forEach(item => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <h3>${item.title}</h3>
-                <p class="consuming-item-description">${item.description}</p>
-            `;
-            ul.appendChild(li);
-        });
-        
-        const viewAllLink = document.createElement('a');
-        viewAllLink.className = 'read-more-link';
-        viewAllLink.href = `${tab}.html`;
-        viewAllLink.textContent = `View all ${tab}`;
+            const latestItems = items.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
 
-        contentContainer.innerHTML = '';
-        contentContainer.appendChild(ul);
-        contentContainer.appendChild(viewAllLink);
+            const ul = document.createElement('ul');
+            latestItems.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <h3><a href="${tab}.html#${item.id}">${item.title}</a></h3>
+                    <p class="consuming-item-description">${item.description}</p>
+                `;
+                ul.appendChild(li);
+            });
+            
+            const viewAllLink = document.createElement('a');
+            viewAllLink.className = 'read-more-link';
+            viewAllLink.href = `${tab}.html`;
+            viewAllLink.textContent = `View all ${tab}`;
+
+            contentContainer.innerHTML = '';
+            contentContainer.appendChild(ul);
+            contentContainer.appendChild(viewAllLink);
+        } catch (error) {
+            console.error(`Error loading ${tab}:`, error);
+            contentContainer.innerHTML = `<p>Could not load ${tab}.</p>`;
+        }
     }
 
     tabs.forEach(tab => {
@@ -201,7 +167,7 @@ function handleConsumingTabs() {
     }
 }
 
-// New function to load content for subpages like Notes, Articles, etc.
+// Function to load content for subpages
 async function loadSubpageContent() {
     const navContainer = document.getElementById('subpage-nav-list');
     const contentContainer = document.getElementById('subpage-content-area');
@@ -220,45 +186,44 @@ async function loadSubpageContent() {
         const data = await response.json();
         const converter = new showdown.Converter();
 
-        // Populate sidebar
+        const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
         navContainer.innerHTML = '';
-        data.forEach((item, index) => {
+        sortedData.forEach((item) => {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = `#${item.id}`;
             a.textContent = item.title;
-            if (index === 0) {
-                a.classList.add('active');
-            }
             li.appendChild(a);
             navContainer.appendChild(li);
         });
 
-        // Function to render content
-        const renderContent = (id) => {
-            const item = data.find(d => d.id === id);
+        const renderContent = () => {
+            const hash = window.location.hash.substring(1);
+            const item = sortedData.find(d => d.id === hash) || sortedData[0];
+
             if (item) {
-                const html = converter.makeHtml(item.content);
+                const html = converter.makeHtml(item.content || item.description);
                 contentContainer.innerHTML = `<h1>${item.title}</h1>${html}`;
+
+                navContainer.querySelectorAll('a').forEach(l => l.classList.remove('active'));
+                const activeLink = navContainer.querySelector(`a[href="#${item.id}"]`);
+                if (activeLink) activeLink.classList.add('active');
             }
         };
 
-        // Add click listeners to sidebar links
-        const navLinks = navContainer.querySelectorAll('a');
-        navLinks.forEach(link => {
+        navContainer.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                const id = link.getAttribute('href').substring(1);
-                renderContent(id);
+                const id = link.getAttribute('href');
+                history.pushState(null, null, id);
+                renderContent();
             });
         });
+        
+        window.addEventListener('popstate', renderContent);
 
-        // Initial render of the first item
-        if (data.length > 0) {
-            renderContent(data[0].id);
-        }
+        renderContent();
 
     } catch (error) {
         console.error('Error fetching or parsing content:', error);
