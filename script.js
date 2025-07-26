@@ -16,6 +16,24 @@ function goHome() {
   window.location.href = "index.html";
 }
 
+// Function to handle the active state of navigation links
+function handleActiveNav() {
+  const navLinks = document.querySelectorAll('.nav-pill a');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+      // Prevent default link behavior for this example
+      event.preventDefault(); 
+
+      // Remove active class from all links
+      navLinks.forEach(navLink => navLink.classList.remove('active'));
+      
+      // Add active class to the clicked link
+      this.classList.add('active');
+    });
+  });
+}
+
 // Dummy data for latest articles and notes
 const articles = [
   "How I built my portfolio site",
@@ -59,8 +77,9 @@ function loadNotes() {
   }
 }
 
-// Load dynamic content when the DOM is ready
+// Load dynamic content and set up event listeners when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   loadArticles();
   loadNotes();
+  handleActiveNav(); // Set up the navigation link handler
 });
