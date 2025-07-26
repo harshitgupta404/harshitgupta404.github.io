@@ -1,0 +1,17 @@
+[
+  {
+    "id": "series-1",
+    "title": "Breaking Bad",
+    "content": "A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family's future. Widely regarded as one of the greatest television series of all time."
+  },
+  {
+    "id": "series-2",
+    "title": "The Sopranos",
+    "content": "This series revolutionized television drama. New Jersey mob boss Tony Soprano deals with personal and professional issues in his home and business life that affect his mental state, leading him to seek professional psychiatric counseling."
+  },
+  {
+    "id": "series-3",
+    "title": "Game of Thrones",
+    "content": "An epic fantasy series that became a global phenomenon. Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia."
+  }
+]
