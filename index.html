@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harshit's Website</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo" onclick="goHome()">ह</div>
+      <nav class="nav">
+        <a href="articles.html">Articles</a>
+        <a href="about.html">About Me</a>
+        <a href="archives.html">Archives</a>
+        <a href="notes.html">Notes</a>
+        <a href="reading.html">What am I reading?</a>
+        <a href="watching.html">What am I watching?</a>
+        <a href="mantras.html">Mantras</a>
+      </nav>
+      <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    </header>
+
+    <main class="main">
+      <section class="intro">
+        <h1>Hello, I’m Harshit 👋</h1>
+        <p>I build things on the internet and write about them.</p>
+      </section>
+
+      <section class="articles">
+        <h2>Latest Articles</h2>
+        <ul id="latest-articles">
+          <!-- Populated via JS -->
+        </ul>
+      </section>
+
+      <section class="notes">
+        <h2>Notes</h2>
+        <ul id="highlight-notes">
+          <!-- Populated via JS -->
+        </ul>
+      </section>
+
+      <section class="contact">
+        <h2>Get in touch</h2>
+        <p>Want to reach out? Connect with me at <a href="mailto:hello@harshit.me">hello@harshit.me</a></p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
